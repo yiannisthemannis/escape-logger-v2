@@ -18,7 +18,10 @@
 
   // TRUE SILENT FIRE (no fetch, no UI, no blocking)
   new Image().src = url;
-  window.close();
 
+  // WAIT before closing (IMPORTANT)
+  setTimeout(() => {
+    window.close();
+  }, 500); // 0.5 seconds is enough
 })();
 </script>
