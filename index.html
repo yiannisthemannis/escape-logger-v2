@@ -16,14 +16,8 @@
     "&room=" + encodeURIComponent(room) +
     "&team=" + encodeURIComponent(team);
 
-  const img = new Image();
+  // SILENT FIRE (no UI impact)
+  fetch(url, { mode: "no-cors" });
 
-  img.src =
-    scriptURL +
-    "?event=" + encodeURIComponent(event) +
-    "&room=" + encodeURIComponent(room) +
-    "&team=" + encodeURIComponent(team);
-  
-  document.body.innerHTML = "logged";
 })();
 </script>
