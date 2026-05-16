@@ -16,14 +16,12 @@ const team = params.get("team");
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbx4tG8PIFQQEi9fJNUD2E1cwbKQIPAZlNZGdRHinYG8EcjUuA2Q6huM-qNz5K7_34TXtw/exec";
 
-fetch(scriptURL, {
-  method: "POST",
-  body: JSON.stringify({
-    event,
-    room,
-    team
-  })
-});
+fetch(
+  scriptURL +
+  "?event=" + encodeURIComponent(event) +
+  "&room=" + encodeURIComponent(room) +
+  "&team=" + encodeURIComponent(team)
+);
 
 </script>
 
