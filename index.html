@@ -1,17 +1,29 @@
-const params = new URLSearchParams(window.location.search);
+<script>
+(function () {
 
-const event = params.get("event");
-const room  = params.get("room");
-const team  = params.get("team");
+  const params = new URLSearchParams(window.location.search);
 
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbx4tG8PIFQQEi9fJNUD2E1cwbKQIPAZlNZGdRHinYG8EcjUuA2Q6huM-qNz5K7_34TXtw/exec";
+  const event = params.get("event") || "unknown_event";
+  const room  = params.get("room")  || "unknown_room";
+  const team  = params.get("team")  || "unknown_team";
 
-fetch(
-  scriptURL +
-  "?event=" + encodeURIComponent(event) +
-  "&room=" + encodeURIComponent(room) +
-  "&team=" + encodeURIComponent(team)
-);
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbx4tG8PIFQQEi9fJNUD2E1cwbKQIPAZlNZGdRHinYG8EcjUuA2Q6huM-qNz5K7_34TXtw/exec";
 
-document.body.innerHTML = "logged";
+  const url =
+    scriptURL +
+    "?event=" + encodeURIComponent(event) +
+    "&room=" + encodeURIComponent(room) +
+    "&team=" + encodeURIComponent(team);
+
+  fetch(url)
+    .then(() => {
+      document.body.innerHTML = "logged";
+    })
+    .catch((err) => {
+      document.body.innerHTML = "error";
+      console.error(err);
+    });
+
+})();
+</script>
