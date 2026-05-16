@@ -16,14 +16,14 @@
     "&room=" + encodeURIComponent(room) +
     "&team=" + encodeURIComponent(team);
 
-  fetch(url)
-    .then(() => {
-      document.body.innerHTML = "logged";
-    })
-    .catch((err) => {
-      document.body.innerHTML = "error";
-      console.error(err);
-    });
+  const img = new Image();
 
+  img.src =
+    scriptURL +
+    "?event=" + encodeURIComponent(event) +
+    "&room=" + encodeURIComponent(room) +
+    "&team=" + encodeURIComponent(team);
+  
+  document.body.innerHTML = "logged";
 })();
 </script>
