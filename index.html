@@ -16,8 +16,8 @@
     "&room=" + encodeURIComponent(room) +
     "&team=" + encodeURIComponent(team);
 
-  // SILENT FIRE (no UI impact)
-  fetch(url, { mode: "no-cors" });
+  // TRUE SILENT FIRE (no fetch, no UI, no blocking)
+  new Image().src = url;
 
 })();
 </script>
