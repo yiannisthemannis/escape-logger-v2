@@ -17,7 +17,7 @@
     "&team=" + encodeURIComponent(team);
 
   // TRUE SILENT FIRE (no fetch, no UI, no blocking)
-  new Image().src = url;
+  new Image().src = scriptURL + params;
   window.close();
 
 })();
