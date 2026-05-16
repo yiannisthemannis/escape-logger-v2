@@ -1,35 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Escape Logger</title>
-</head>
+const params = new URLSearchParams(window.location.search);
 
-<body>
+const event = params.get("event");
+const room  = params.get("room");
+const team  = params.get("team");
 
-<script>
-(function () {
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbx4tG8PIFQQEi9fJNUD2E1cwbKQIPAZlNZGdRHinYG8EcjUuA2Q6huM-qNz5K7_34TXtw/exec";
 
-  const params = new URLSearchParams(window.location.search);
+fetch(
+  scriptURL +
+  "?event=" + encodeURIComponent(event) +
+  "&room=" + encodeURIComponent(room) +
+  "&team=" + encodeURIComponent(team)
+);
 
-  const event = params.get("event") || "unknown_event";
-  const room  = params.get("room")  || "unknown_room";
-  const team  = params.get("team")  || "unknown_team";
-
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbx4tG8PIFQQEi9fJNUD2E1cwbKQIPAZlNZGdRHinYG8EcjUuA2Q6huM-qNz5K7_34TXtw/exec";
-
-  // send event (simple GET = most reliable for your setup)
-  fetch('https://script.google.com/macros/s/.../exec?event=test&room=reactor&team=alpha')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(err => console.error('Error:', err));
-
-  // optional: tiny confirmation for debugging (remove later if you want)
-  document.body.innerHTML = "logged";
-
-})();
-</script>
-
-</body>
-</html>
+document.body.innerHTML = "logged";
